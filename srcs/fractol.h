@@ -6,7 +6,7 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 16:04:21 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/15 13:51:30 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:24:41 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,12 @@ void			mandelbrotset(t_mlx *v);
 void			juliaset(t_mlx *v);
 void			burning_ship_set(t_mlx *v);
 void			tricorn_set(t_mlx *v);
+void			multibrotset(t_mlx *v);
 void			initialize(t_mlx *v);
 void			initialize1(t_mlx *v);
 void			initialize2(t_mlx *v);
 void			initialize3(t_mlx *v);
+void			initialize4(t_mlx *v);
 int				coloring(t_mlx *v, int nb);
 int				mouse_move(int x, int y, void *p);
 void			ft_reload_image(t_mlx *v);
@@ -107,31 +109,39 @@ void			*part6(void *param);
 void			*part7(void *param);
 void			*part8(void *param);
 
-int				root1(t_mlx *v, t_var1 *x, int it);
-void			*parti4(void *param);
-void			*parti5(void *param);
-void			*parti6(void *param);
-void			*parti7(void *param);
-void			*parti8(void *param);
+int				loop(t_mlx *v, t_var1 *x, int it);
+void			*unit4(void *param);
+void			*unit5(void *param);
+void			*unit6(void *param);
+void			*unit7(void *param);
+void			*unit8(void *param);
 
-int				root2(t_mlx *v, t_var1 *x, int it);
-void			*partie4(void *param);
-void			*partie5(void *param);
-void			*partie6(void *param);
-void			*partie7(void *param);
-void			*partie8(void *param);
+int				origin(t_mlx *v, t_var1 *x, int it);
+void			*item4(void *param);
+void			*item5(void *param);
+void			*item6(void *param);
+void			*item7(void *param);
+void			*item8(void *param);
 
-int				root3(t_mlx *v, t_var1 *x, int it);
-void			*partii4(void *param);
-void			*partii5(void *param);
-void			*partii6(void *param);
-void			*partii7(void *param);
-void			*partii8(void *param);
+int				source(t_mlx *v, t_var1 *x, int it);
+void			*segment4(void *param);
+void			*segment5(void *param);
+void			*segment6(void *param);
+void			*segment7(void *param);
+void			*segment8(void *param);
+
+int				base(t_mlx *v, t_var1 *x, int it);
+void			*element4(void *param);
+void			*element5(void *param);
+void			*element6(void *param);
+void			*element7(void *param);
+void			*element8(void *param);
 
 void			mandelbrot_draw(t_mlx *v, char *str);
 void			burning_ship_draw(t_mlx *v, char *str);
 void			tricorn_draw(t_mlx *v, char *str);
 void			julia_draw(t_mlx *v, char *str);
+void			multibrot_draw(t_mlx *v, char *str);
 
 /*
 **				events1 file functions

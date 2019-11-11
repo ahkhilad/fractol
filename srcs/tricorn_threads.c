@@ -6,13 +6,13 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 16:27:30 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/12 16:50:49 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:17:17 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	*partii4(void *param)
+void	*segment4(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -29,7 +29,7 @@ void	*partii4(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root3(v, &x, x.it);
+			x.t = source(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -41,7 +41,7 @@ void	*partii4(void *param)
 	return (NULL);
 }
 
-void	*partii5(void *param)
+void	*segment5(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -58,7 +58,7 @@ void	*partii5(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root3(v, &x, x.it);
+			x.t = source(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -70,7 +70,7 @@ void	*partii5(void *param)
 	return (NULL);
 }
 
-void	*partii6(void *param)
+void	*segment6(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -87,7 +87,7 @@ void	*partii6(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root3(v, &x, x.it);
+			x.t = source(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -99,7 +99,7 @@ void	*partii6(void *param)
 	return (NULL);
 }
 
-void	*partii7(void *param)
+void	*segment7(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -116,7 +116,7 @@ void	*partii7(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root3(v, &x, x.it);
+			x.t = source(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -128,7 +128,7 @@ void	*partii7(void *param)
 	return (NULL);
 }
 
-void	*partii8(void *param)
+void	*segment8(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -145,7 +145,7 @@ void	*partii8(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root3(v, &x, x.it);
+			x.t = source(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else

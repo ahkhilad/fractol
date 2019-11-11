@@ -6,13 +6,13 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 22:35:19 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/13 22:41:07 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:17:52 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		root3(t_mlx *v, t_var1 *x, int it)
+int		source(t_mlx *v, t_var1 *x, int it)
 {
 	double	tmp;
 
@@ -26,7 +26,7 @@ int		root3(t_mlx *v, t_var1 *x, int it)
 	return (it);
 }
 
-void	*partii1(void *param)
+void	*segment1(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -43,7 +43,7 @@ void	*partii1(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root3(v, &x, x.it);
+			x.t = source(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -55,7 +55,7 @@ void	*partii1(void *param)
 	return (NULL);
 }
 
-void	*partii2(void *param)
+void	*segment2(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -72,7 +72,7 @@ void	*partii2(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root3(v, &x, x.it);
+			x.t = source(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -84,7 +84,7 @@ void	*partii2(void *param)
 	return (NULL);
 }
 
-void	*partii3(void *param)
+void	*segment3(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -101,7 +101,7 @@ void	*partii3(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root3(v, &x, x.it);
+			x.t = source(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -121,14 +121,14 @@ void	tricorn_set(t_mlx *v)
 	i = -1;
 	v->w.zoom_x = IMG_W / (v->w.x2 - v->w.x1);
 	v->w.zoom_y = IMG_H / (v->w.y2 - v->w.y1);
-	pthread_create(&v->core[0], NULL, partii1, (void *)v);
-	pthread_create(&v->core[1], NULL, partii2, (void *)v);
-	pthread_create(&v->core[2], NULL, partii3, (void *)v);
-	pthread_create(&v->core[3], NULL, partii4, (void *)v);
-	pthread_create(&v->core[4], NULL, partii5, (void *)v);
-	pthread_create(&v->core[5], NULL, partii6, (void *)v);
-	pthread_create(&v->core[6], NULL, partii7, (void *)v);
-	pthread_create(&v->core[7], NULL, partii8, (void *)v);
+	pthread_create(&v->core[0], NULL, segment1, (void *)v);
+	pthread_create(&v->core[1], NULL, segment2, (void *)v);
+	pthread_create(&v->core[2], NULL, segment3, (void *)v);
+	pthread_create(&v->core[3], NULL, segment4, (void *)v);
+	pthread_create(&v->core[4], NULL, segment5, (void *)v);
+	pthread_create(&v->core[5], NULL, segment6, (void *)v);
+	pthread_create(&v->core[6], NULL, segment7, (void *)v);
+	pthread_create(&v->core[7], NULL, segment8, (void *)v);
 	while (++i < 8)
 		pthread_join(v->core[i], NULL);
 	mlx_put_image_to_window(v->mlptr, v->wptr, v->iptr, 0, 0);

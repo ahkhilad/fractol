@@ -6,7 +6,7 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 15:50:23 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/14 19:18:48 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 20:35:01 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	usage(void)
 {
 	ft_putstr("Usage: binary file [fractal name].\n");
 	ft_putstr("Available fractals :\n--> Mandelbrot\n--> Julia\n");
-	ft_putstr("--> Burning_ship\n--> Tricorn\n");
+	ft_putstr("--> Burning_ship\n--> Tricorn\n--> Multibrot\n");
+	exit(0);
 }
 
 void	fractal_set(t_mlx *v, char *av)
@@ -25,11 +26,13 @@ void	fractal_set(t_mlx *v, char *av)
 	char	*jul;
 	char	*bur;
 	char	*tri;
+	char	*mul;
 
 	man = "Mandelbrot";
 	jul = "Julia";
 	bur = "Burning_ship";
 	tri = "Tricorn";
+	mul = "Multibrot";
 	if (ft_strcmp(av, man) == 0)
 		mandelbrot_draw(v, av);
 	else if (ft_strcmp(av, bur) == 0)
@@ -38,11 +41,10 @@ void	fractal_set(t_mlx *v, char *av)
 		tricorn_draw(v, av);
 	else if (ft_strcmp(av, jul) == 0)
 		julia_draw(v, av);
+	else if (ft_strcmp(av, mul) == 0)
+		multibrot_draw(v, av);
 	else
-	{
 		usage();
-		exit(0);
-	}
 }
 
 int		mouse_press(int button, int x, int y, void *p)

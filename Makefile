@@ -6,7 +6,7 @@
 #    By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/06 14:38:16 by ahkhilad          #+#    #+#              #
-#    Updated: 2019/10/13 17:25:16 by ahkhilad         ###   ########.fr        #
+#    Updated: 2019/10/24 19:21:59 by ahkhilad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS = ./srcs/main.c ./srcs/mandelbrot.c ./srcs/julia.c ./srcs/burning_ship.c\
 	   ./srcs/tricorn.c ./srcs/option_menu.c ./srcs/colors_management.c \
 	   ./srcs/mandelbrot_threads.c ./srcs/julia_threads.c \
 	   ./srcs/burning_ship_threads.c ./srcs/tricorn_threads.c \
+	   ./srcs/multibrot_3.c ./srcs/multibrot_3_threads.c \
 	   ./srcs/variables_initialization.c ./srcs/drawing.c ./srcs/mlx_use.c \
 	   ./srcs/events1.c ./srcs/events2.c ./srcs/events3.c ./srcs/events4.c
 
@@ -37,7 +38,7 @@ $(OBJ): $(SRCS)
 	mv *.o ./srcs/
 	@echo "\033[0m"
 
-$(LFT): libft/*.c
+$(LFT):
 	@echo "\033[2;33m"
 	make -C libft
 	@echo "\033[0m"

@@ -6,7 +6,7 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 19:13:08 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/13 16:38:22 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 20:20:21 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,20 @@ void	options_menu1(t_mlx *v)
 	int		co;
 
 	co = 0xffffff;
-	mlx_string_put(v->mlptr, v->wptr, 620, 220, 0xf39c16, "[Fractals]");
-	mlx_string_put(v->mlptr, v->wptr, 620, 245, co, "[ M ] Mandelbrot set");
-	mlx_string_put(v->mlptr, v->wptr, 620, 265, co, "[ J ] Julia set");
-	mlx_string_put(v->mlptr, v->wptr, 620, 285, co, "[ S ] Burning_ship set");
-	mlx_string_put(v->mlptr, v->wptr, 620, 305, co, "[ T ] Tricon set");
-	mlx_string_put(v->mlptr, v->wptr, 620, 330, 0xf39c16, "[RGB Colors]");
-	mlx_string_put(v->mlptr, v->wptr, 620, 355, 0xff0000, "[ R ] Red");
-	mlx_string_put(v->mlptr, v->wptr, 620, 375, 0x00ff00, "[ G ] Green");
-	mlx_string_put(v->mlptr, v->wptr, 620, 395, 0x0000ff, "[ B ] Blue");
-	mlx_string_put(v->mlptr, v->wptr, 620, 420, 0xf39c16, "[Colors Shifting]");
-	mlx_string_put(v->mlptr, v->wptr, 700, 445, co, "[ X ]");
-	mlx_string_put(v->mlptr, v->wptr, 745, 445, co, "[ C ]");
-	mlx_string_put(v->mlptr, v->wptr, 790, 445, co, "[ V ]");
+	mlx_string_put(v->mlptr, v->wptr, 620, 215, 0xf39c16, "[Fractals]");
+	mlx_string_put(v->mlptr, v->wptr, 620, 235, co, "[ M ] Mandelbrot set");
+	mlx_string_put(v->mlptr, v->wptr, 620, 255, co, "[ J ] Julia set");
+	mlx_string_put(v->mlptr, v->wptr, 620, 275, co, "[ S ] Burning_ship set");
+	mlx_string_put(v->mlptr, v->wptr, 620, 295, co, "[ T ] Tricon set");
+	mlx_string_put(v->mlptr, v->wptr, 620, 315, co, "[ P ] Multibrot set");
+	mlx_string_put(v->mlptr, v->wptr, 620, 340, 0xf39c16, "[RGB Colors]");
+	mlx_string_put(v->mlptr, v->wptr, 620, 365, 0xff0000, "[ R ] Red");
+	mlx_string_put(v->mlptr, v->wptr, 620, 385, 0x00ff00, "[ G ] Green");
+	mlx_string_put(v->mlptr, v->wptr, 620, 405, 0x0000ff, "[ B ] Blue");
+	mlx_string_put(v->mlptr, v->wptr, 620, 430, 0xf39c16, "[Colors Shifting]");
+	mlx_string_put(v->mlptr, v->wptr, 700, 455, co, "[ X ]");
+	mlx_string_put(v->mlptr, v->wptr, 745, 455, co, "[ C ]");
+	mlx_string_put(v->mlptr, v->wptr, 790, 455, co, "[ V ]");
 }
 
 void	options_menu2(t_mlx *v)
@@ -61,13 +62,13 @@ void	options_menu2(t_mlx *v)
 	int		co;
 
 	co = 0xffffff;
-	mlx_string_put(v->mlptr, v->wptr, 620, 470, 0xf39c16, "[Colors Contrast]");
-	mlx_string_put(v->mlptr, v->wptr, 720, 495, co, "[ + ]");
-	mlx_string_put(v->mlptr, v->wptr, 765, 495, co, "[ - ]");
-	mlx_string_put(v->mlptr, v->wptr, 620, 520, 0xf39c16, "[Reset]");
-	mlx_string_put(v->mlptr, v->wptr, 690, 520, co, "[ D ]");
-	mlx_string_put(v->mlptr, v->wptr, 750, 520, 0xf39c16, "| [Exit]");
-	mlx_string_put(v->mlptr, v->wptr, 830, 520, co, "[ ESC ]");
+	mlx_string_put(v->mlptr, v->wptr, 620, 480, 0xf39c16, "[Colors Contrast]");
+	mlx_string_put(v->mlptr, v->wptr, 720, 505, co, "[ + ]");
+	mlx_string_put(v->mlptr, v->wptr, 765, 505, co, "[ - ]");
+	mlx_string_put(v->mlptr, v->wptr, 620, 530, 0xf39c16, "[Reset]");
+	mlx_string_put(v->mlptr, v->wptr, 690, 530, co, "[ D ]");
+	mlx_string_put(v->mlptr, v->wptr, 750, 530, 0xf39c16, "| [Exit]");
+	mlx_string_put(v->mlptr, v->wptr, 830, 530, co, "[ ESC ]");
 	mlx_string_put(v->mlptr, v->wptr, 620, 560, co, "Zoom:x");
 	mlx_string_put(v->mlptr, v->wptr, 680, 560, 0x37ff16, ft_itoa(v->zoom));
 	mlx_string_put(v->mlptr, v->wptr, 720, 560, co, "|   Iterations :");

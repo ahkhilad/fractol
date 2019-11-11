@@ -6,7 +6,7 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 16:52:39 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/13 17:01:33 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 20:31:09 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,6 @@ void	fractal_selection(t_mlx *v)
 		burning_ship_set(v);
 	if (v->w.fract_select == 4)
 		tricorn_set(v);
+	if (v->w.fract_select == 5)
+		multibrotset(v);
 }

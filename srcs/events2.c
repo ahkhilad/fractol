@@ -6,7 +6,7 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 17:02:48 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/13 17:09:25 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 20:30:12 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,18 @@ void	fractal_mouvement2(t_mlx *v, int keycode)
 		ft_reload_image(v);
 		fractal_selection(v);
 	}
+	if (keycode == 35)
+	{
+		initialize4(v);
+		v->zoom = 0;
+		v->w.max_iter = 150;
+		ft_reload_image(v);
+		v->color = 0;
+		v->change = 0;
+		v->freeze = 0;
+		v->w.fract_select = 5;
+		multibrotset(v);
+	}
 }
 
 void	iterations_control(t_mlx *v, int keycode)
@@ -129,4 +141,10 @@ void	iterations_control(t_mlx *v, int keycode)
 			fractal_selection(v);
 		}
 	}
+	if (keycode == 2)
+		if (v->w.fract_select == 5)
+		{
+			initialize4(v);
+			multibrotset(v);
+		}
 }

@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   burning_ship.c                                     :+:      :+:    :+:   */
+/*   multibrot_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 22:34:38 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/24 22:13:08 by ahkhilad         ###   ########.fr       */
+/*   Created: 2019/10/24 19:18:53 by ahkhilad          #+#    #+#             */
+/*   Updated: 2019/10/24 22:24:33 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		origin(t_mlx *v, t_var1 *x, int it)
+int		base(t_mlx *v, t_var1 *x, int it)
 {
 	double	tmp;
 
 	while ((x->z_r * x->z_r + x->z_i * x->z_i) < 4 && it < v->w.max_iter)
 	{
-		tmp = fabs(x->z_r);
-		x->z_r = x->z_r * x->z_r - x->z_i * x->z_i + x->c_r;
-		x->z_i = fabs(2 * x->z_i * tmp + x->c_i);
+		tmp = x->z_r;
+		x->z_r = x->z_r * x->z_r * x->z_r * x->z_r - 6 * x->z_r * x->z_r * \
+				x->z_i * x->z_i + x->z_i * x->z_i * x->z_i * x->z_i + x->c_r;
+		x->z_i = 4 * x->z_i * tmp * tmp * tmp - 4 * tmp * x->z_i * \
+				x->z_i * x->z_i + x->c_i;
 		it += 1;
 	}
 	return (it);
 }
 
-void	*item1(void *param)
+void	*element1(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -43,7 +45,7 @@ void	*item1(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = origin(v, &x, x.it);
+			x.t = base(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -55,7 +57,7 @@ void	*item1(void *param)
 	return (NULL);
 }
 
-void	*item2(void *param)
+void	*element2(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -72,7 +74,7 @@ void	*item2(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = origin(v, &x, x.it);
+			x.t = base(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -84,7 +86,7 @@ void	*item2(void *param)
 	return (NULL);
 }
 
-void	*item3(void *param)
+void	*element3(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -101,7 +103,7 @@ void	*item3(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = origin(v, &x, x.it);
+			x.t = base(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -113,7 +115,7 @@ void	*item3(void *param)
 	return (NULL);
 }
 
-void	burning_ship_set(t_mlx *v)
+void	multibrotset(t_mlx *v)
 {
 	double	tmp;
 	int		i;
@@ -121,14 +123,14 @@ void	burning_ship_set(t_mlx *v)
 	i = -1;
 	v->w.zoom_x = IMG_W / (v->w.x2 - v->w.x1);
 	v->w.zoom_y = IMG_H / (v->w.y2 - v->w.y1);
-	pthread_create(&v->core[0], NULL, item1, (void *)v);
-	pthread_create(&v->core[1], NULL, item2, (void *)v);
-	pthread_create(&v->core[2], NULL, item3, (void *)v);
-	pthread_create(&v->core[3], NULL, item4, (void *)v);
-	pthread_create(&v->core[4], NULL, item5, (void *)v);
-	pthread_create(&v->core[5], NULL, item6, (void *)v);
-	pthread_create(&v->core[6], NULL, item7, (void *)v);
-	pthread_create(&v->core[7], NULL, item8, (void *)v);
+	pthread_create(&v->core[0], NULL, element1, (void *)v);
+	pthread_create(&v->core[1], NULL, element2, (void *)v);
+	pthread_create(&v->core[2], NULL, element3, (void *)v);
+	pthread_create(&v->core[3], NULL, element4, (void *)v);
+	pthread_create(&v->core[4], NULL, element5, (void *)v);
+	pthread_create(&v->core[5], NULL, element6, (void *)v);
+	pthread_create(&v->core[6], NULL, element7, (void *)v);
+	pthread_create(&v->core[7], NULL, element8, (void *)v);
 	while (++i < 8)
 		pthread_join(v->core[i], NULL);
 	mlx_put_image_to_window(v->mlptr, v->wptr, v->iptr, 0, 0);

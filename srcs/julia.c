@@ -6,13 +6,13 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 13:26:44 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/12 17:59:32 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:14:00 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		root1(t_mlx *v, t_var1 *x, int it)
+int		loop(t_mlx *v, t_var1 *x, int it)
 {
 	double	tmp;
 
@@ -26,7 +26,7 @@ int		root1(t_mlx *v, t_var1 *x, int it)
 	return (it);
 }
 
-void	*parti1(void *param)
+void	*unit1(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -43,7 +43,7 @@ void	*parti1(void *param)
 			x.z_r = x.j / v->w.zoom_x + v->w.x1;
 			x.z_i = x.i / v->w.zoom_y + v->w.y1;
 			x.it = 0;
-			x.t = root1(v, &x, x.it);
+			x.t = loop(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -55,7 +55,7 @@ void	*parti1(void *param)
 	return (NULL);
 }
 
-void	*parti2(void *param)
+void	*unit2(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -72,7 +72,7 @@ void	*parti2(void *param)
 			x.z_r = x.j / v->w.zoom_x + v->w.x1;
 			x.z_i = x.i / v->w.zoom_y + v->w.y1;
 			x.it = 0;
-			x.t = root1(v, &x, x.it);
+			x.t = loop(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -84,7 +84,7 @@ void	*parti2(void *param)
 	return (NULL);
 }
 
-void	*parti3(void *param)
+void	*unit3(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -101,7 +101,7 @@ void	*parti3(void *param)
 			x.z_r = x.j / v->w.zoom_x + v->w.x1;
 			x.z_i = x.i / v->w.zoom_y + v->w.y1;
 			x.it = 0;
-			x.t = root1(v, &x, x.it);
+			x.t = loop(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -121,14 +121,14 @@ void	juliaset(t_mlx *v)
 	i = -1;
 	v->w.zoom_x = IMG_W / (v->w.x2 - v->w.x1);
 	v->w.zoom_y = IMG_H / (v->w.y2 - v->w.y1);
-	pthread_create(&v->core[0], NULL, parti1, (void *)v);
-	pthread_create(&v->core[1], NULL, parti2, (void *)v);
-	pthread_create(&v->core[2], NULL, parti3, (void *)v);
-	pthread_create(&v->core[3], NULL, parti4, (void *)v);
-	pthread_create(&v->core[4], NULL, parti5, (void *)v);
-	pthread_create(&v->core[5], NULL, parti6, (void *)v);
-	pthread_create(&v->core[6], NULL, parti7, (void *)v);
-	pthread_create(&v->core[7], NULL, parti8, (void *)v);
+	pthread_create(&v->core[0], NULL, unit1, (void *)v);
+	pthread_create(&v->core[1], NULL, unit2, (void *)v);
+	pthread_create(&v->core[2], NULL, unit3, (void *)v);
+	pthread_create(&v->core[3], NULL, unit4, (void *)v);
+	pthread_create(&v->core[4], NULL, unit5, (void *)v);
+	pthread_create(&v->core[5], NULL, unit6, (void *)v);
+	pthread_create(&v->core[6], NULL, unit7, (void *)v);
+	pthread_create(&v->core[7], NULL, unit8, (void *)v);
 	while (++i < 8)
 		pthread_join(v->core[i], NULL);
 	mlx_put_image_to_window(v->mlptr, v->wptr, v->iptr, 0, 0);

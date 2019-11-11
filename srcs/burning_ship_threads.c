@@ -6,13 +6,13 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 14:36:27 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/12 15:19:19 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:12:10 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	*partie4(void *param)
+void	*item4(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -29,7 +29,7 @@ void	*partie4(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root2(v, &x, x.it);
+			x.t = origin(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -41,7 +41,7 @@ void	*partie4(void *param)
 	return (NULL);
 }
 
-void	*partie5(void *param)
+void	*item5(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -58,7 +58,7 @@ void	*partie5(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root2(v, &x, x.it);
+			x.t = origin(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -70,7 +70,7 @@ void	*partie5(void *param)
 	return (NULL);
 }
 
-void	*partie6(void *param)
+void	*item6(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -87,7 +87,7 @@ void	*partie6(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root2(v, &x, x.it);
+			x.t = origin(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -99,7 +99,7 @@ void	*partie6(void *param)
 	return (NULL);
 }
 
-void	*partie7(void *param)
+void	*item7(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -116,7 +116,7 @@ void	*partie7(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root2(v, &x, x.it);
+			x.t = origin(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -128,7 +128,7 @@ void	*partie7(void *param)
 	return (NULL);
 }
 
-void	*partie8(void *param)
+void	*item8(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -145,7 +145,7 @@ void	*partie8(void *param)
 			x.z_r = 0;
 			x.z_i = 0;
 			x.it = 0;
-			x.t = root2(v, &x, x.it);
+			x.t = origin(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else

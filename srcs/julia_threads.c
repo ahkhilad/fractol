@@ -6,13 +6,13 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:59:57 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/12 14:23:27 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:14:32 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	*parti4(void *param)
+void	*unit4(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -29,7 +29,7 @@ void	*parti4(void *param)
 			x.z_r = x.j / v->w.zoom_x + v->w.x1;
 			x.z_i = x.i / v->w.zoom_y + v->w.y1;
 			x.it = 0;
-			x.t = root1(v, &x, x.it);
+			x.t = loop(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -41,7 +41,7 @@ void	*parti4(void *param)
 	return (NULL);
 }
 
-void	*parti5(void *param)
+void	*unit5(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -58,7 +58,7 @@ void	*parti5(void *param)
 			x.z_r = x.j / v->w.zoom_x + v->w.x1;
 			x.z_i = x.i / v->w.zoom_y + v->w.y1;
 			x.it = 0;
-			x.t = root1(v, &x, x.it);
+			x.t = loop(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -70,7 +70,7 @@ void	*parti5(void *param)
 	return (NULL);
 }
 
-void	*parti6(void *param)
+void	*unit6(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -87,7 +87,7 @@ void	*parti6(void *param)
 			x.z_r = x.j / v->w.zoom_x + v->w.x1;
 			x.z_i = x.i / v->w.zoom_y + v->w.y1;
 			x.it = 0;
-			x.t = root1(v, &x, x.it);
+			x.t = loop(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -99,7 +99,7 @@ void	*parti6(void *param)
 	return (NULL);
 }
 
-void	*parti7(void *param)
+void	*unit7(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -116,7 +116,7 @@ void	*parti7(void *param)
 			x.z_r = x.j / v->w.zoom_x + v->w.x1;
 			x.z_i = x.i / v->w.zoom_y + v->w.y1;
 			x.it = 0;
-			x.t = root1(v, &x, x.it);
+			x.t = loop(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else
@@ -128,7 +128,7 @@ void	*parti7(void *param)
 	return (NULL);
 }
 
-void	*parti8(void *param)
+void	*unit8(void *param)
 {
 	t_mlx	*v;
 	t_var1	x;
@@ -145,7 +145,7 @@ void	*parti8(void *param)
 			x.z_r = x.j / v->w.zoom_x + v->w.x1;
 			x.z_i = x.i / v->w.zoom_y + v->w.y1;
 			x.it = 0;
-			x.t = root1(v, &x, x.it);
+			x.t = loop(v, &x, x.it);
 			if (x.t < v->w.max_iter)
 				v->rt[x.i * IMG_W + x.j] = coloring(v, x.t) * x.t;
 			else

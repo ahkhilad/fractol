@@ -6,7 +6,7 @@
 /*   By: ahkhilad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 16:21:14 by ahkhilad          #+#    #+#             */
-/*   Updated: 2019/10/13 16:34:27 by ahkhilad         ###   ########.fr       */
+/*   Updated: 2019/10/24 17:23:59 by ahkhilad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,12 @@ void	julia_draw(t_mlx *v, char *str)
 	initialize1(v);
 	juliaset(v);
 	mlx_hook(v->wptr, 6, 0, mouse_move, (void *)v);
+}
+
+void	multibrot_draw(t_mlx *v, char *str)
+{
+	ft_mlx_init(v, str);
+	v->w.fract_select = 5;
+	initialize4(v);
+	multibrotset(v);
 }
